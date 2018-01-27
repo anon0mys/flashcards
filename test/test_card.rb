@@ -1,9 +1,9 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/flashcards.rb'
+require './lib/card.rb'
 
-class TestFlashcards < Minitest::Test
+class TestCard < Minitest::Test
 
   def test_card_initializes_properly
     card = Card.new("Question", "Answer")
