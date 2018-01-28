@@ -23,4 +23,10 @@ class Round
     total = results.find_all { |result| result.include?("true") }
     total.count
   end
+
+  def percent_correct
+    decimal = number_correct/@guesses.length.to_f
+    percent = decimal * 100
+    percent.to_i
+  end
 end

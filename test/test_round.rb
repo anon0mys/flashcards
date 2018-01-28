@@ -62,7 +62,11 @@ class TestRound < Minitest::Test
     assert_equal 2, @round.number_correct
   end
 
-  def tst_round_percent_correct
+  def test_round_percent_correct
+    @guesses.each do |guess|
+      @round.record_guesses(guess)
+    end
+    assert_equal 66, @round.percent_correct
   end
 
 end
