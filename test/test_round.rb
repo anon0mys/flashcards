@@ -14,6 +14,7 @@ class TestRound < Minitest::Test
     @card_3 = Card.new("Question 3", "Answer 3")
     @deck = Deck.new([@card_1, @card_2, @card_3])
     @round = Round.new(@deck)
+    @guesses = ["Answer 1", "Wrong Answer", "Answer 3"]
   end
 
   def test_round_initailizes_with_deck
@@ -39,16 +40,14 @@ class TestRound < Minitest::Test
   end
 
   def test_round_counts_guesses
-    guesses = ["Answer 1", "Answer 2", "Answer 3"]
-    guesses.each.with_index do |guess, index|
+    @guesses.each.with_index do |guess, index|
       @round.record_guesses(guess)
       assert_equal index + 1, @round.guesses.count
     end
   end
 
   def test_round_gets_guess_feedback
-    guesses = ["Answer 1", "Wrong Answer", "Answer 3"]
-    guesses.each do |guess|
+    @guesses.each do |guess|
       @round.record_guesses(guess)
     end
     assert_output ("Correct!\n") { @round.guesses.first.feedback }
@@ -57,13 +56,13 @@ class TestRound < Minitest::Test
   end
 
   def test_round_counts_correct_guesses
-    guesses = ["Answer 1", "Wrong Answer", "Answer 3"]
-    guesses.each do |guess|
+    @guesses.each do |guess|
       @round.record_guesses(guess)
     end
     assert_equal 2, @round.number_correct
   end
 
-  
+  def tst_round_percent_correct
+  end
 
 end
