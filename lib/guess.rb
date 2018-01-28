@@ -20,7 +20,7 @@ class Guess
     if correct?
       puts "Correct!"
     else
-      puts "Incorrect, please guess again."
+      puts "Incorrect."
     end
   end
 end

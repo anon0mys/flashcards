@@ -4,16 +4,38 @@ require './lib/card.rb'
 require './lib/deck.rb'
 require './lib/guess.rb'
 require './lib/round.rb'
+require './lib/card_generator.rb'
 
 class Runner
 
   def initialize
-    @card_1 = Card.new("Question 1", "Answer 1")
-    @card_2 = Card.new("Question 2", "Answer 2")
-    @card_3 = Card.new("Question 3", "Answer 3")
-    @deck = Deck.new([@card_1, @card_2, @card_3])
+    @cards = set_file_name
+    @deck = Deck.new(@cards)
     @round = Round.new(@deck)
     intro
+  end
+
+  def set_file_name
+    puts "Please enter your filename"
+    filename = gets.chomp
+    if filename =~ /.txt/
+      set_file(filename)
+    elsif !filename.include?(".")
+      filename = filename + ".txt"
+      set_file(filename)
+    else
+      puts "Please enter a valid file type (.txt)"
+      set_file_name
+    end
+  end
+
+  def set_file(filename)
+    if File.exist?("./lib/#{filename}")
+      CardGenerator.new(filename).new_cards
+    else
+      puts "Your file does not exist, please enter another file."
+      set_file_name
+    end
   end
 
   def intro
@@ -43,8 +65,13 @@ class Runner
   end
 
   def round_end
+    stats = {
+      correct: @round.number_correct,
+      out_of: @deck.cards.length,
+      score: @round.percent_correct
+    }
     puts "***** Game Over *****"
-    puts "You had #{@round.number_correct} correct guesses out of #{@deck.cards.length} for a score of #{@round.percent_correct}"
+    puts "You had #{stats[:correct]} correct guesses out of #{stats[:out_of]} for a score of #{stats[:score]}"
   end
 
 end
