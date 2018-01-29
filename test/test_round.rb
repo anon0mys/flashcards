@@ -50,9 +50,9 @@ class TestRound < Minitest::Test
     @guesses.each do |guess|
       @round.record_guesses(guess)
     end
-    assert_output ("Correct!\n") { @round.guesses.first.feedback }
-    assert_output ("Incorrect.\n") { @round.guesses[1].feedback }
-    assert_output ("Correct!\n") { @round.guesses.last.feedback }
+    assert_equal "Correct!", @round.guesses.first.feedback
+    assert_equal "Incorrect", @round.guesses[1].feedback
+    assert_equal "Correct!", @round.guesses.last.feedback
   end
 
   def test_round_counts_correct_guesses
