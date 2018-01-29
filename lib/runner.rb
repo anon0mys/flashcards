@@ -84,13 +84,8 @@ class Runner
   end
 
   def round_end
-    stats = {
-      correct: @round.number_correct,
-      out_of: @deck.cards.length,
-      score: @round.percent_correct
-    }
     puts "***** Game Over *****"
-    puts "You had #{stats[:correct]} correct guesses out of #{stats[:out_of]} for a score of #{stats[:score]}"
+    puts "You had #{@round.number_correct} correct guesses out of #{@deck.cards.length} for a score of #{@round.percent_correct}"
     record_round
   end
 
