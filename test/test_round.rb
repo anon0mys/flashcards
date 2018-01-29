@@ -51,7 +51,7 @@ class TestRound < Minitest::Test
       @round.record_guesses(guess)
     end
     assert_output ("Correct!\n") { @round.guesses.first.feedback }
-    assert_output ("Incorrect, please guess again.\n") { @round.guesses[1].feedback }
+    assert_output ("Incorrect.\n") { @round.guesses[1].feedback }
     assert_output ("Correct!\n") { @round.guesses.last.feedback }
   end
 

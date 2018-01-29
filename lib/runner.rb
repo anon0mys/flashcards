@@ -9,7 +9,11 @@ require './lib/card_generator.rb'
 class Runner
 
   def initialize
-    @cards = set_file_name
+    if ARGV.length > 0
+      @cards = set_file(ARGV.first.chomp)
+    else
+      @cards = set_file_name
+    end
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
     intro
@@ -17,12 +21,12 @@ class Runner
 
   def set_file_name
     puts "Please enter your filename"
-    filename = gets.chomp
+    filename = STDIN.gets.chomp
     if filename =~ /.txt/
       set_file(filename)
-    elsif !filename.include?(".")
-      filename = filename + ".txt"
-      set_file(filename)
+    # elsif !filename.include?(".")
+    #   filename = filename + ".txt"
+    #   set_file(filename)
     else
       puts "Please enter a valid file type (.txt)"
       set_file_name
@@ -50,7 +54,7 @@ class Runner
   end
 
   def guess
-    guess = gets.chomp
+    guess = STDIN.gets.chomp
     @round.record_guesses(guess)
   end
 

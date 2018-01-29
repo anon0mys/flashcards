@@ -29,7 +29,7 @@ class TestGuess < Minitest::Test
 
   def test_guess_feedback
     assert_output ("Correct!\n") { @good_guess.feedback }
-    assert_output ("Incorrect, please guess again.\n") { @bad_guess.feedback }
+    assert_output ("Incorrect.\n") { @bad_guess.feedback }
   end
 
 end
