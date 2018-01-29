@@ -13,14 +13,15 @@ class Guess
   end
 
   def correct?
-    @guess == response
+    @guess.downcase == response.downcase
   end
 
   def feedback
     if correct?
-      puts "Correct!"
+      result = "Correct!"
     else
-      puts "Incorrect."
+      result = "Incorrect"
     end
+    result
   end
 end

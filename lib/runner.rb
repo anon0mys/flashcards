@@ -1,5 +1,6 @@
 
 require 'pry'
+require 'date'
 require './lib/card.rb'
 require './lib/deck.rb'
 require './lib/guess.rb'
@@ -75,9 +76,21 @@ class Runner
       score: @round.percent_correct
     }
     puts "***** Game Over *****"
-    puts "You had #{stats[:correct]} correct guesses out of #{stats[:out_of]} for a score of #{stats[:score]}"
+    puts "You had #{stats[:correct]} correct guesses out of #{stats[:out_of]} for a score of #{stats[:score]}" #Should I put this on multiple lines?
+    record_round
   end
 
+  def record_round
+    date_stamp = DateTime.now
+    round_file_name = date_stamp.strftime("results-%F-%I:%M%P.txt")
+    round_file = File.new("./lib/#{round_file_name}", "w")
+    @round.guesses.each.with_index do |guess, index|
+      round_file.write("Question #{index + 1} was: #{guess.card.question}\n") #Can I combine this into a single command?
+      round_file.write("The Answer was : #{guess.card.answer}\n")
+      round_file.write("You guessed: #{guess.guess}\n")
+      round_file.write("Your answer was #{guess.feedback}\n\n")
+    end
+  end
 end
 
 runner = Runner.new
