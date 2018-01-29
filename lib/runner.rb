@@ -54,16 +54,21 @@ class Runner
     card_number
   end
 
-  def guess
+  def get_guess
     guess = STDIN.gets.chomp
-    @round.record_guesses(guess)
+    if guess =~ /hint/
+      puts @round.current_card.hint
+      get_guess()
+    else
+      @round.record_guesses(guess)
+    end
   end
 
   def run
     while @round.guesses.length < @deck.cards.length
       puts "This is card #{current_card_number} of #{@deck.cards.length}"
       puts @round.current_card.question
-      guess()
+      get_guess()
       check_guess()
     end
     round_end

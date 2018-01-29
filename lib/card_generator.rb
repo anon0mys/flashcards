@@ -25,8 +25,8 @@ class CardGenerator
 
   def new_cards
     lines().each do |line|
-      card_pair = line.split(",")
-      card = Card.new(card_pair[0], card_pair[1].chomp)
+      card_info = line.split(",")
+      card = Card.new(card_info[0], card_info[1], card_info[2])
       @card_list << card
     end
     @card_list

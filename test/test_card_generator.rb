@@ -9,10 +9,10 @@ class TestCardGenerator < Minitest::Test
   def setup
     @filename = "cards.txt"
     @cards = CardGenerator.new(@filename)
-    @lines = ["What is 5 + 5?,10\n",
-              "What is Rachel's favorite animal?,red panda\n",
-              "What is Mike's middle name?,nobody knows\n",
-              "What cardboard cutout lives at Turing?,Justin bieber\n"
+    @lines = ["What is 5 + 5?,10,1 and zero\n",
+              "What is Rachel's favorite animal?,red panda,an odd color for a panda\n",
+              "What is Mike's middle name?,nobody knows,dunno\n",
+              "What cardboard cutout lives at Turing?,Justin bieber,Canadian by technicality\n"
             ]
   end
 
