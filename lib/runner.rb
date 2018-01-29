@@ -63,10 +63,19 @@ class Runner
     while @round.guesses.length < @deck.cards.length
       puts "This is card #{current_card_number} of #{@deck.cards.length}"
       puts @round.current_card.question
-      guess
-      puts @round.guesses.last.feedback
+      guess()
+      check_guess()
     end
     round_end
+  end
+
+  def check_guess
+    if @round.guesses.last.correct?
+      puts @round.guesses.last.feedback
+    else
+      puts @round.guesses.last.feedback
+      @deck.cards << @round.guesses.last.card
+    end
   end
 
   def round_end
@@ -76,7 +85,7 @@ class Runner
       score: @round.percent_correct
     }
     puts "***** Game Over *****"
-    puts "You had #{stats[:correct]} correct guesses out of #{stats[:out_of]} for a score of #{stats[:score]}" #Should I put this on multiple lines?
+    puts "You had #{stats[:correct]} correct guesses out of #{stats[:out_of]} for a score of #{stats[:score]}"
     record_round
   end
 
