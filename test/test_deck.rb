@@ -16,7 +16,7 @@ class TestGuess < Minitest::Test
 
   def test_deck_initializes_with_cards
     assert_instance_of Deck, @deck
-    assert @deck.cards
+    assert @deck.cards #test for cards as instances
   end
 
   def test_deck_count

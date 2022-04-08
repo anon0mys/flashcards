@@ -9,14 +9,14 @@ class Round
   end
 
   def current_card
-    @deck.cards[@guesses.length]
+    @deck.cards[@guesses.length] #Create a card index
   end
 
-  def record_guesses(guess)
-    @guesses << Guess.new(guess, current_card)
+  def record_guesses(guess) #Call it record_guess
+    @guesses << Guess.new(guess, current_card) #Should return the new guess instance
   end
 
-  def number_correct
+  def number_correct #Simplify string with counter
     results = @guesses.map do |guess|
       guess.correct?.to_s
     end
@@ -27,6 +27,6 @@ class Round
   def percent_correct
     decimal = number_correct/@guesses.length.to_f
     percent = decimal * 100
-    percent.to_i
+    percent.round
   end
 end

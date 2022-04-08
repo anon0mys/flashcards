@@ -5,7 +5,7 @@ require './lib/card.rb'
 
 class TestCard < Minitest::Test
 
-  def test_card_initializes_properly
+  def test_card_initializes_properly #Write as two tests
     card = Card.new("Question", "Answer")
     assert_instance_of Card, card
     assert card.question

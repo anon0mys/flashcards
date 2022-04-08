@@ -45,20 +45,18 @@ class Runner
 
   def intro
     puts "Welcome! You are playing with #{@deck.cards.length} cards."
-    45.times { print "-" }
-    puts "\n"
+    puts '-' * 45
   end
 
   def current_card_number
-    card_number = @deck.cards.index(@round.current_card) + 1
-    card_number
+    @deck.cards.index(@round.current_card) + 1
   end
 
   def get_guess
     guess = STDIN.gets.chomp
     if guess =~ /hint/
       puts @round.current_card.hint
-      get_guess()
+      get_guess
     else
       @round.record_guesses(guess)
     end
@@ -68,17 +66,15 @@ class Runner
     while @round.guesses.length < @deck.cards.length
       puts "This is card #{current_card_number} of #{@deck.cards.length}"
       puts @round.current_card.question
-      get_guess()
-      check_guess()
+      get_guess
+      check_guess
     end
     round_end
   end
 
   def check_guess
-    if @round.guesses.last.correct?
-      puts @round.guesses.last.feedback
-    else
-      puts @round.guesses.last.feedback
+    puts @round.guesses.last.feedback
+    if !@round.guesses.last.correct?
       @deck.cards << @round.guesses.last.card
     end
   end

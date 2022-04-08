@@ -1,0 +1,30 @@
+Question 1 was: What is 5 + 5?
+The Answer was : 10
+You guessed: 10
+Your answer was Correct!
+
+Question 2 was: What is Rachel's favorite animal?
+The Answer was : red panda
+You guessed: dunno
+Your answer was Incorrect
+
+Question 3 was: What is Mike's middle name?
+The Answer was : nobody knows
+You guessed: nobody knows
+Your answer was Correct!
+
+Question 4 was: What cardboard cutout lives at Turing?
+The Answer was : Justin bieber
+You guessed: dunno
+Your answer was Incorrect
+
+Question 5 was: What is Rachel's favorite animal?
+The Answer was : red panda
+You guessed: red panda
+Your answer was Correct!
+
+Question 6 was: What cardboard cutout lives at Turing?
+The Answer was : Justin bieber
+You guessed: justin bieber
+Your answer was Correct!
+

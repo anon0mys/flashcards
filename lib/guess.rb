@@ -1,3 +1,4 @@
+require 'pry'
 
 class Guess
   attr_reader :guess, :card
@@ -8,8 +9,7 @@ class Guess
   end
 
   def response
-    answer = @card.answer
-    answer
+    @card.answer
   end
 
   def correct?
@@ -18,10 +18,9 @@ class Guess
 
   def feedback
     if correct?
-      result = "Correct!"
+      "Correct!"
     else
-      result = "Incorrect"
+      "Incorrect"
     end
-    result
   end
 end
